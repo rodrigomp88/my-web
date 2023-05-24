@@ -14,6 +14,7 @@ import {
   ModalBody,
   ModalCloseButton,
   FormLabel,
+  Image,
 } from "@chakra-ui/react";
 import {
   addDoc,
@@ -94,7 +95,7 @@ export const FormAddProyect = () => {
 
   const selected_images = selectedFiles?.map((file) => (
     <div key={file.path} className="flex-auto">
-      <img src={file.preview} alt="" style={{ height: "100px" }} />
+      <Image src={file.preview} alt="" style={{ height: "100px" }} />
       <button onClick={removeFile(file)}>borrar</button>
     </div>
   ));
