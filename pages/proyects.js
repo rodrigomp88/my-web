@@ -20,7 +20,7 @@ const Proyects = () => {
 
         <SimpleGrid columns={[1, 1, 2]} gap={6}>
           {latestProjects.map((project) => (
-            <Section key={project.id} delay={0.2}>
+            <Section key={project.id} delay={0.4}>
               <WorkGridItem
                 id={project.id}
                 title={project.title}
@@ -42,7 +42,7 @@ const Proyects = () => {
 
         <SimpleGrid columns={[2, 2, 3]} gap={3}>
           {proyects.map((project) => (
-            <Section key={project.id} delay={0.4}>
+            <Section key={project.id} delay={0.6}>
               <WorkGridItem
                 id={project.id}
                 title={project.title}

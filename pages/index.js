@@ -11,14 +11,26 @@ import {
   ListItem,
   Flex,
   Tooltip,
+  SimpleGrid,
 } from "@chakra-ui/react";
 import Layout from "@/components/Layouts/article";
 import { FaAngleRight, FaRegFilePdf } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
-import { BioSection, BioYear, Paragraph, Section } from "@/components";
+import {
+  BioSection,
+  BioYear,
+  Paragraph,
+  Section,
+  WorkGridItem,
+} from "@/components";
+import { useContext } from "react";
+import { ProjectContext } from "@/context";
 
 const Home = () => {
   const { t } = useTranslation();
+  const { proyects } = useContext(ProjectContext);
+
+  const latestProjects = proyects.slice(0, 2);
 
   return (
     <Layout>
@@ -30,11 +42,12 @@ const Home = () => {
             <NextLink href="/curriculum.pdf" pt={8}>
               <Text
                 display="flex"
+                alignItems="center"
                 fontWeight="bold"
-                alt="alt text"
                 target="_blank"
                 rel="noopener noreferrer"
               >
+                {"  "}
                 {t("home.cv")}
                 <FaRegFilePdf />
               </Text>
@@ -70,7 +83,7 @@ const Home = () => {
           textAlign="center"
           bg={useColorModeValue("whiteAlpha.500", "whiteAlpha.200")}
         >
-          React | Next | JavaScript | NodeJs | MySql | MongoDB | Firebase
+          React | Next | JavaScript | NodeJs | MongoDB | Firebase | MySql
         </Box>
 
         <Section delay={0.3}>
@@ -80,7 +93,21 @@ const Home = () => {
           <Paragraph>{t("home.aboutSection")}</Paragraph>
         </Section>
 
-        <Box mt={10} mb={6} align="center">
+        <SimpleGrid columns={[1, 1, 2]} gap={6} pt={8}>
+          {latestProjects.map((project) => (
+            <Section key={project.id} delay={0.4}>
+              <WorkGridItem
+                id={project.id}
+                title={project.title}
+                thumbnail={project.images}
+              >
+                {project.stack}
+              </WorkGridItem>
+            </Section>
+          ))}
+        </SimpleGrid>
+
+        <Box py={2} mb={6} align="center">
           <NextLink href="/proyects" passHref>
             <Button rightIcon={<FaAngleRight />} colorScheme="teal">
               {t("home.topButton")}

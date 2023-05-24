@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { useRouter } from "next/router";
 import { useTranslation } from "react-i18next";
+import NextLink from "next/link";
 import {
   Container,
   Badge,
@@ -15,6 +16,7 @@ import { IoLogoGithub } from "react-icons/io5";
 import { ProjectContext } from "@/context";
 import { Title, WorkImage, Meta, Paragraph } from "../../components";
 import Layout from "@/components/Layouts/article";
+import { FaExternalLinkAlt, FaLink } from "react-icons/fa";
 
 const ProjectDetail = () => {
   const { t } = useTranslation();
@@ -47,24 +49,27 @@ const ProjectDetail = () => {
           <Badge>{title}</Badge> {description}
         </Paragraph>
         <List ml={4} my={4}>
-          <ListItem>
-            <Meta>URL</Meta>
-            <Link href={urlDeploy} target="_blank">
-              {t("projects.url")}
-            </Link>
-          </ListItem>
+          {urlDeploy === "" ? null : (
+            <ListItem display="flex" alignItems="center">
+              <Meta>URL</Meta>
+              <Link href={urlDeploy} target="_blank" pr={2}>
+                {t("projects.url")}{" "}
+              </Link>
+              <FaExternalLinkAlt mx="4px" />
+            </ListItem>
+          )}
           <ListItem>
             <Meta>Stack</Meta>
             <span>{stack}</span>
           </ListItem>
-          <ListItem>
+          <ListItem display="flex" alignItems="center">
             <Meta>
               <IoLogoGithub />
             </Meta>
-            <Link href={urlRepo} target="_blank">
+            <Link href={urlRepo} target="_blank" pr={2}>
               {t("projects.code")}
-              {/* <FaLink mx="4px" /> */}
             </Link>
+            <FaLink mx="4px" />
           </ListItem>
         </List>
         <Heading as="h4" fontSize={16} my={6}>
@@ -72,9 +77,9 @@ const ProjectDetail = () => {
         </Heading>
         <SimpleGrid columns={2} gap={2}>
           {images.map((img, index) => (
-            <>
-              <WorkImage key={index} src={img} alt={img.title} />
-            </>
+            <div key={index}>
+              <WorkImage src={img} alt={img.title} />
+            </div>
           ))}
         </SimpleGrid>
       </Container>

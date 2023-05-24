@@ -28,7 +28,7 @@ export const WorkGridItem = ({ children, id, title, thumbnail }) => (
           src={thumbnail}
           alt={title}
           className="grid-item-thumbnail"
-          h={{ base: 44, md: 32 }}
+          h={{ base: 36, md: 32 }}
           w={"100%"}
           objectFit="cover"
           objectPosition="top"
