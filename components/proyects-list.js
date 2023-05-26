@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import NextLink from "next/link";
 import {
   Box,
@@ -17,6 +17,15 @@ import {
   Td,
   Button,
   Tooltip,
+  Alert,
+  AlertIcon,
+  CloseButton,
+  AlertDialog,
+  AlertDialogOverlay,
+  AlertDialogContent,
+  AlertDialogHeader,
+  AlertDialogBody,
+  AlertDialogFooter,
 } from "@chakra-ui/react";
 import { IoClipboardOutline, IoTrashOutline } from "react-icons/io5";
 import { FormAddProyect } from ".";
@@ -24,10 +33,48 @@ import { ProjectContext } from "@/context";
 
 export const ProyectsList = () => {
   const { proyects, deleteProyect } = useContext(ProjectContext);
+  const [success, setSuccess] = useState(false);
+  const [confirmDelete, setConfirmDelete] = useState(null);
+
+  const handleDeleteProyect = async (id) => {
+    try {
+      await deleteProyect(id);
+      setSuccess(true);
+      setConfirmDelete(null);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleCloseSuccess = () => {
+    setSuccess(false);
+  };
+
+  const handleOpenConfirmDelete = (id) => {
+    setConfirmDelete(id);
+  };
+
+  const handleCloseConfirmDelete = () => {
+    setConfirmDelete(null);
+  };
 
   return (
     <Container>
       <FormAddProyect />
+
+      {success && (
+        <Alert status="success" mb={4} rounded="md">
+          <AlertIcon />
+          El proyecto se ha eliminado con éxito.
+          <CloseButton
+            ml={2}
+            onClick={handleCloseSuccess}
+            position="absolute"
+            right="8px"
+            top="8px"
+          />
+        </Alert>
+      )}
 
       {proyects.length > 0 ? (
         <>
@@ -64,7 +111,7 @@ export const ProyectsList = () => {
                           ml={5}
                           colorScheme="red"
                           onClick={() => {
-                            deleteProyect(proyect.id);
+                            handleOpenConfirmDelete(proyect.id);
                           }}
                         >
                           <IoTrashOutline />
@@ -85,6 +132,38 @@ export const ProyectsList = () => {
           </Box>
         </Grid>
       )}
+
+      <AlertDialog
+        isOpen={confirmDelete !== null}
+        leastDestructiveRef={undefined}
+        onClose={handleCloseConfirmDelete}
+      >
+        <AlertDialogOverlay>
+          <AlertDialogContent>
+            <AlertDialogHeader fontSize="lg" fontWeight="bold">
+              Eliminar proyecto
+            </AlertDialogHeader>
+
+            <AlertDialogBody>
+              ¿Estás seguro de que deseas eliminar este proyecto?
+            </AlertDialogBody>
+
+            <AlertDialogFooter>
+              <Button
+                ref={undefined}
+                onClick={() => {
+                  handleDeleteProyect(confirmDelete);
+                }}
+                colorScheme="red"
+                ml={3}
+              >
+                Eliminar
+              </Button>
+              <Button onClick={handleCloseConfirmDelete}>Cancelar</Button>
+            </AlertDialogFooter>
+          </AlertDialogContent>
+        </AlertDialogOverlay>
+      </AlertDialog>
     </Container>
   );
 };

@@ -15,6 +15,7 @@ import {
   ModalCloseButton,
   FormLabel,
   Image,
+  Spinner,
 } from "@chakra-ui/react";
 import {
   addDoc,
@@ -31,6 +32,7 @@ import { FaPlus } from "react-icons/fa";
 
 export const FormAddProyect = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const [isLoading, setIsLoading] = useState(false);
 
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -40,6 +42,8 @@ export const FormAddProyect = () => {
   const [selectedFiles, setSelectedFiles] = useState([]);
 
   const addProyect = async () => {
+    setIsLoading(true);
+
     const docRef = await addDoc(
       collection(db, process.env.NEXT_PUBLIC_DB_NAME),
       {
@@ -66,6 +70,7 @@ export const FormAddProyect = () => {
       })
     );
 
+    setIsLoading(false);
     setTitle("");
     setDescription("");
     setStack("");
@@ -195,7 +200,7 @@ export const FormAddProyect = () => {
                 Cancelar
               </Button>
               <Button
-                leftIcon={<FaPlus />}
+                leftIcon={isLoading ? <Spinner size="sm" /> : <FaPlus />}
                 colorScheme="teal"
                 disabled={!title.trim() || !description.trim() || !stack.trim()}
                 onClick={addProyect}
