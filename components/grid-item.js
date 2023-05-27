@@ -31,7 +31,7 @@ export const WorkGridItem = ({ children, id, title, thumbnail }) => (
           h={{ base: 36, md: 32 }}
           w={"100%"}
           objectFit="cover"
-          objectPosition="top"
+          objectPosition="center"
         />
         <Box href={`/proyects/${id}`}>
           <Text mt={2} fontSize={20}>

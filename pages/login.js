@@ -1,22 +1,24 @@
 import { useContext } from "react";
-import { Container, Link, Button, Box } from "@chakra-ui/react";
+import { Container, Button, Box } from "@chakra-ui/react";
 import { AuthContext } from "../context";
 import { FormLogin, HeadingText, WarningText } from "../components";
-import { FaAngleLeft, FaUserSlash } from "react-icons/fa";
+import { FaAngleLeft } from "react-icons/fa";
 import Layout from "@/components/Layouts/article";
+import NextLink from "next/link";
+import { useTranslation } from "react-i18next";
 
 const LoginPage = () => {
+  const { t } = useTranslation();
   const { user } = useContext(AuthContext);
 
   return (
     <Layout title="Login">
       <Container>
         <HeadingText
-          title={"Login"}
+          title={`${t("login.login")}`}
           subTitle={
-            !user ? "¡Solo para el administrador!" : "¡Ya estás logueado!"
+            !user ? `${t("login.headingText")}` : `${t("login.!headingText")}`
           }
-          icon={<FaUserSlash />}
         />
         <Box my={10} align="center">
           {!user ? (
@@ -25,11 +27,11 @@ const LoginPage = () => {
               <WarningText />
             </Container>
           ) : (
-            <Link href="/admin">
+            <NextLink href="/admin">
               <Button colorScheme="teal" leftIcon={<FaAngleLeft />}>
                 Admin
               </Button>
-            </Link>
+            </NextLink>
           )}
         </Box>
       </Container>

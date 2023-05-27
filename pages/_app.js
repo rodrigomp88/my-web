@@ -8,8 +8,8 @@ import "../locales";
 
 export default function App({ Component, pageProps, router }) {
   return (
-    <ProjectProvider>
-      <AuthProvider>
+    <AuthProvider>
+      <ProjectProvider>
         <ChakraProvider theme={theme}>
           <Layout router={router}>
             <Fonts />
@@ -18,7 +18,7 @@ export default function App({ Component, pageProps, router }) {
             </AnimatePresence>
           </Layout>
         </ChakraProvider>
-      </AuthProvider>
-    </ProjectProvider>
+      </ProjectProvider>
+    </AuthProvider>
   );
 }

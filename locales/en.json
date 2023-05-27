@@ -23,7 +23,10 @@
     "endBtn": "Contact to me"
   },
   "projects": {
+    "title": "Projects",
     "loader": "Loading...",
+    "last": "Last projects",
+    "all": "All projects",
     "url": "View page",
     "code": "View code",
     "screen": "Screenshot"
@@ -39,6 +42,14 @@
     "btn": "send",
     "hading2": "Other ways to contact me:",
     "link": "(only Whatsapp)"
+  },
+  "login": {
+    "login": "Login",
+    "headingText": "Only for the admin",
+    "!headingText": "You´re already logged in",
+    "warningText1": "Clone this repository on",
+    "warningText2": "and follow the steps in the",
+    "warningText3": "file for its operation."
   },
   "footer": {
     "badge": "Made with"

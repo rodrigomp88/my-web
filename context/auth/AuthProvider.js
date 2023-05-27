@@ -25,6 +25,12 @@ export const AuthProvider = ({ children }) => {
       dispatch({ type: types.login, payload: currentUser });
       return true;
     });
+
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) {
+      dispatch({ type: types.login, payload: JSON.parse(storedUser) });
+    }
+
     return () => unsubuscribe();
   }, []);
 
@@ -33,6 +39,9 @@ export const AuthProvider = ({ children }) => {
       const { data } = await signInWithEmailAndPassword(auth, email, password);
       const { user } = data;
       dispatch({ type: types.login, payload: user });
+
+      localStorage.setItem("user", JSON.stringify(user));
+
       return true;
     } catch (error) {
       return false;

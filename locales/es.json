@@ -6,14 +6,14 @@
     "about": "Inicio"
   },
   "home": {
-    "topButton": "Todos los proyectos",
     "title": "Desarrollador web",
     "cv": "Descarga cv",
+    "topButton": "Todos los proyectos",
+    "aboutTitle": "Inicio",
+    "aboutSection": "Soy Rodrigo, un desarrollador web de Argentina con experiencia en front-end y back-end. Mi enfoque es crear experiencias de usuario intuitivas y de fácil accesibilidad. Siempre estoy en constante aprendizaje, adquiriendo nuevas herramientas y conocimientos para mejorar mis habilidades y ofrecer soluciones de alta calidad.",
     "exp": "Experiencia",
     "expBioYear": "Presente",
     "expBioSection": "Desarrollo web freelance, ayuda con la creación y tutorías para el manejo de correos electrónicos corporativos. Soporte y asesoría para la compra de software para el posicionamiento de unidades y administracion de la organización.",
-    "aboutTitle": "Inicio",
-    "aboutSection": "Soy Rodrigo, un desarrollador web de Argentina con experiencia en front-end y back-end. Mi enfoque es crear experiencias de usuario intuitivas y de fácil accesibilidad. Siempre estoy en constante aprendizaje, adquiriendo nuevas herramientas y conocimientos para mejorar mis habilidades y ofrecer soluciones de alta calidad.",
     "education": "Educación",
     "educationUtn": "Comienzo estudios de programación en",
     "educationHenry": "Curso intensivo de dearrollo web",
@@ -23,7 +23,10 @@
     "endBtn": "Contáctame"
   },
   "projects": {
+    "title": "Proyectos",
     "loader": "Cargando...",
+    "last": "Últimos proyectos",
+    "all": "Todos los proyectos",
     "url": "Ver página",
     "code": "Ver código",
     "screen": "Pantallazos"
@@ -39,6 +42,14 @@
     "btn": "Enviar",
     "hading2": "Otras formas de contactarme:",
     "link": "Solo Whatsapp"
+  },
+  "login": {
+    "login": "Acceso",
+    "headingText": "Solo para el administrador",
+    "!headingText": "Ya estas logueado",
+    "warningText1": "Clona está repositorio en",
+    "warningText2": "y sigue los pasos del archivo ",
+    "warningText3": "para su funcionamiento."
   },
   "footer": {
     "badge": "Hecho con"

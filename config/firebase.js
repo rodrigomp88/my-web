@@ -13,7 +13,7 @@ const firebaseConfig = {
 };
 
 const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
-// console.log("Firebase app initialized:", app);
+
 const auth = getAuth(app);
 const db = getFirestore(app);
 const storage = getStorage(app);

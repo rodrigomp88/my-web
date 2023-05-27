@@ -3,8 +3,10 @@ import { Container, Heading, SimpleGrid, Divider } from "@chakra-ui/react";
 import { ProjectContext } from "@/context";
 import { WorkGridItem, Section } from "../components";
 import Layout from "@/components/Layouts/article";
+import { useTranslation } from "react-i18next";
 
 const Proyects = () => {
+  const { t } = useTranslation();
   const { proyects } = useContext(ProjectContext);
 
   const latestProjects = proyects.slice(0, 4);
@@ -12,9 +14,14 @@ const Proyects = () => {
   return (
     <Layout title="Proyectos">
       <Container>
+        <Section delay={0.3}>
+          <Heading as="h1" variant="section-title" fontSize={25} mb={4} mt={8}>
+            {t("projects.title")}
+          </Heading>
+        </Section>
         <Section delay={0.1}>
-          <Heading as="h3" fontSize={20} mb={4} mt={4}>
-            Últimos proyectos
+          <Heading as="h3" variant="section-title" fontSize={20} mb={4} mt={4}>
+            {t("projects.last")}
           </Heading>
         </Section>
 
@@ -35,8 +42,8 @@ const Proyects = () => {
         <Section delay={0.3}>
           <Divider my={6} />
 
-          <Heading as="h3" fontSize={20} mb={4}>
-            Todos los proyectos {proyects.length}
+          <Heading as="h3" variant="section-title" fontSize={20} mb={4}>
+            {t("projects.all")} {proyects.length}
           </Heading>
         </Section>
 

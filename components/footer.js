@@ -9,8 +9,10 @@ import {
   Icon,
   SimpleGrid,
   Tooltip,
+  Divider,
 } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
+import { FaGithub } from "react-icons/fa";
 import { IoLogoLinkedin, IoLogoGithub } from "react-icons/io5";
 
 export const Footer = () => {
@@ -18,7 +20,8 @@ export const Footer = () => {
 
   return (
     <Box align="center" opacity={0.4} fontSize="sm">
-      <SimpleGrid row={[2]} gap={2}>
+      <Divider />
+      <SimpleGrid mt={3} row={[2]} gap={2}>
         <List>
           <ListItem>
             <Tooltip label="GitHub" placement="top">
@@ -45,8 +48,22 @@ export const Footer = () => {
           </ListItem>
         </List>
       </SimpleGrid>
-      <Badge mt={4}>
-        {t("footer.badge")} ♥, Next.js | Chakra.ui | Netlify | Firebase
+      <Text mt={4}>
+        {t("footer.badge")} ♥ & Next.js | Chakra.ui | Netlify | Firebase
+      </Text>
+      <Badge my={2}>
+        <Link
+          target="_blank"
+          href="https://github.com/rodrigomp88/home-page"
+          display="flex"
+          alignItems="center"
+          rounded="md"
+          gap={2}
+          p={2}
+        >
+          <FaGithub />
+          {t("navBar.code")}
+        </Link>
       </Badge>
       <Text mt={4}>&copy; {new Date().getFullYear()} Rodrigo Pinea</Text>
     </Box>

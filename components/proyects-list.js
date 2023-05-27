@@ -26,6 +26,7 @@ import {
   AlertDialogHeader,
   AlertDialogBody,
   AlertDialogFooter,
+  Badge,
 } from "@chakra-ui/react";
 import { IoClipboardOutline, IoTrashOutline } from "react-icons/io5";
 import { FormAddProyect } from ".";
@@ -60,8 +61,18 @@ export const ProyectsList = () => {
 
   return (
     <Container>
-      <FormAddProyect />
-
+      <Box
+        display={{ base: "grid", md: "flex" }}
+        justifyContent="space-between"
+        gap="3"
+        py={2}
+      >
+        <FormAddProyect />
+        <Badge
+          p={3}
+          rounded="md"
+        >{`Proyectos subidos: ${proyects.length}`}</Badge>
+      </Box>
       {success && (
         <Alert status="success" mb={4} rounded="md">
           <AlertIcon />
@@ -79,7 +90,7 @@ export const ProyectsList = () => {
       {proyects.length > 0 ? (
         <>
           <TableContainer boxShadow="lg" p="1" rounded="md">
-            <Table variant="striped" colorScheme="teal">
+            <Table variant="striped" colorScheme="gray">
               <TableCaption>{`Proyectos subidos: "${proyects.length}"`}</TableCaption>
               <Thead>
                 <Tr>
@@ -99,10 +110,11 @@ export const ProyectsList = () => {
                     <Td display={{ base: "none", md: "flex" }}>
                       <Image
                         src={proyect.images}
-                        alt=""
+                        alt={proyect.title}
                         rounded="md"
                         height={50}
                         width={50}
+                        objectFit="cover"
                       />
                     </Td>
                     <Td>

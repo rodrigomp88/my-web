@@ -107,11 +107,11 @@ export const FormAddProyect = () => {
 
   return (
     <>
-      <Box align="center" mb={4}>
+      <Box>
         <Button
           boxShadow="lg"
-          p="2"
-          rightIcon={<FaPlus ml={4} />}
+          p="4"
+          rightIcon={<FaPlus />}
           colorScheme="teal"
           justifyContent="space-between"
           onClick={onOpen}

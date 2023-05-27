@@ -36,7 +36,7 @@ export const FormLogin = () => {
       <form onSubmit={handleSubmit(onSubmit)}>
         <VStack spacing={4} w={{ base: "auto", md: "sm" }}>
           <FormControl>
-            <FormLabel htmlFor="email">Correo</FormLabel>
+            <FormLabel htmlFor="email">User</FormLabel>
             <Input
               id="email"
               type="email"
@@ -53,7 +53,7 @@ export const FormLogin = () => {
             )}
           </FormControl>
           <FormControl>
-            <FormLabel htmlFor="password">Contraseña</FormLabel>
+            <FormLabel htmlFor="password">Password</FormLabel>
             <Input
               id="password"
               type="password"

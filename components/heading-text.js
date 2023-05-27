@@ -3,20 +3,29 @@ import {
   Container,
   Grid,
   Heading,
-  Icon,
   Text,
+  Box,
+  Badge,
 } from "@chakra-ui/react";
 
 export const HeadingText = ({ title, subTitle, icon }) => {
   return (
     <Container>
-      <Grid>
-        <Heading as="h1" variant="section-title" fontSize={28} mb={4} mt={8}>
-          {title} <Icon pl={0}>{icon}</Icon>
+      <Box
+        display="flex"
+        justifyContent="space-between"
+        alignItems="center"
+        mb={4}
+        mt={8}
+      >
+        <Heading as="h1" variant="section-title" fontSize={28}>
+          {title}
         </Heading>
 
-        <Text>{subTitle}</Text>
-      </Grid>
+        <Badge p={2} rounded="md">
+          {subTitle}
+        </Badge>
+      </Box>
 
       <Divider my={6} />
     </Container>
